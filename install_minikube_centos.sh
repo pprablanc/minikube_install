@@ -35,6 +35,19 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s http
 sudo chmod +x kubectl
 sudo mv kubectl  /usr/bin/
 kubectl version --client -o json
-#echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
 minikube start --vm-driver=none
 systemctl enable kubelet.service
+
+
+echo "Additional commands"
+
+echo "Configuring bridge network iptables"
+echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
+
+echo "Kubernetes /etc/kubernetes/admin.conf config file"
+sudo cp /etc/kubernetes/admin.conf $HOME/
+sudo chown $(id -u):$(id -g) $HOME/admin.conf
+echo "export KUBECONFIG=$HOME/admin.conf" >> $HOME/.bashrc
+
+
+
