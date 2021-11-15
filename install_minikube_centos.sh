@@ -26,6 +26,7 @@ sudo systemctl restart libvirtd.service
 
 echo "Step 3: Install Minikube"
 
+yum install -y conntrack
 wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo chmod +x minikube-linux-amd64
 sudo mv minikube-linux-amd64 /usr/bin/minikube
@@ -34,4 +35,6 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s http
 sudo chmod +x kubectl
 sudo mv kubectl  /usr/bin/
 kubectl version --client -o json
-minikube start
+#echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
+minikube start --vm-driver=none
+systemctl enable kubelet.service
