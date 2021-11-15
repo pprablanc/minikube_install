@@ -3,6 +3,15 @@
 echo "Step 1: update system"
 sudo yum update -y
 
+echo "Step 3: Install docker if not installed"
+
+docker
+if [ $? -ne 0 ] ; then
+  echo "Docker is not installed. Installing docker."
+  ./install_docker.sh
+fi
+
+
 echo "Step 2: Install KVM hypervisor"
 
 sudo yum -y install epel-release
