@@ -23,6 +23,6 @@ mv minikube-linux-amd64 /usr/bin/minikube
 minikube version
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 chmod +x kubectl
-mv kubectl  /usr/local/bin/
+mv kubectl  /usr/bin/
 kubectl version --client -o json
 minikube start
