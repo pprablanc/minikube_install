@@ -2,6 +2,6 @@
 
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-sudo yum install docker-ce docker-ce-cli containerd.io
+sudo yum install -y docker-ce docker-ce-cli containerd.io
 sudo systemctl enable docker --now
 sudo usermod -a -G docker $(whoami)
